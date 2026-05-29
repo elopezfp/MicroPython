@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fermentador IoT | Simulacion ESP32</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="texture-overlay"></div>
+  <div class="background-glow glow-a"></div>
+  <div class="background-glow glow-b"></div>
+
+  <main class="shell hero-screen">
+    <section class="hero-stage card">
+      <div class="hero-stage-top">
+        <p class="eyebrow">Fermentador inteligente</p>
+        <h1>Cerveza virtual</h1>
+        <p class="hero-copy">La prueba de 2 minutos corre en el ESP32 y la web refleja la temperatura real, el agua y el estado de la cerveza en tiempo real.</p>
+      </div>
+
+      <div class="beer-showcase">
+        <div class="beer-ambient glow-a"></div>
+        <div class="beer-ambient glow-b"></div>
+
+        <div class="beer-showcase-layout">
+          <div class="beer-stage-frame">
+            <div class="setpoint-left card-inset">
+              <div class="metric-block">
+                <span>Temperatura</span>
+                <strong id="temperatureValue">--.- °C</strong>
+                <small id="temperatureValueMirror">Temperatura real: --.- °C</small>
+              </div>
+              <div class="metric-block">
+                <span>Agua</span>
+                <strong id="waterTempValue">--.- °C</strong>
+                <small>Bloque y circulacion</small>
+              </div>
+              <div class="metric-block">
+                <span>Humedad</span>
+                <strong id="humidityValue">-- %</strong>
+                <small>Entorno de la prueba</small>
+              </div>
+              <div class="metric-block">
+                <span>Objetivo</span>
+                <strong id="setpointValue">--.- °C</strong>
+                <small>Consigna de fermentación</small>
+              </div>
+            </div>
+            <div class="beer-label">CERVEZA VIRTUAL</div>
+            <div class="beer-glass" id="beerGlass">
+              <div class="beer-liquid" id="beerLiquid"></div>
+              <div class="beer-foam" id="beerFoam">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="beer-bubbles">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+              </div>
+              <div class="beer-grain"></div>
+            </div>
+          </div>
+
+          <aside class="beer-side-status card-inset">
+            <span class="section-kicker">Estado actual</span>
+            <strong id="beerPhaseDetail">Preparando prueba</strong>
+            <p id="beerPhaseValue">Preparando prueba</p>
+            <ul>
+              <li><span>Tiempo</span><strong id="beerElapsedValue">0 s</strong></li>
+              <li><span>Bomba</span><strong id="pumpStatusInline">Parada</strong></li>
+              <li><span>Ventilador</span><strong id="fanStatusInline">0 %</strong></li>
+              <li><span>Peltier</span><strong id="peltierStatusInline">0 %</strong></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+
+      <div class="beer-progress-panel">
+        <div class="beer-progress-head">
+          <span>Progreso de fermentación</span>
+          <strong id="beerProgressValue">0 %</strong>
+        </div>
+        <div class="beer-progress-bar">
+          <div class="beer-progress-fill" id="beerProgressFill"></div>
+        </div>
+        <div class="beer-gravity-line">
+          Densidad: <strong id="beerGravityValue">1.050</strong>
+          <span id="statusText">Cargando...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Se han movido los indicadores principales al panel izquierdo de la cerveza. -->
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
